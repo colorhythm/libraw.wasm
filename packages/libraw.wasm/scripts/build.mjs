@@ -97,6 +97,28 @@ extern "C" DllDef libraw_metadata_common_t *libraw_get_common_metadata(libraw_da
 	if (!lr) return NULL;
 	return &(lr->makernotes.common);
 }`,
+	_libraw_get_black: `\
+extern "C" DllDef unsigned libraw_get_black(libraw_data_t *lr) {
+	if (!lr) return 0;
+	return lr->color.black;
+}`,
+	_libraw_get_cblack: `\
+extern "C" DllDef unsigned libraw_get_cblack(libraw_data_t *lr, int index) {
+	if (!lr) return 0;
+	if (index < 0 || index >= (int)LIBRAW_CBLACK_SIZE) return 0;
+	return lr->color.cblack[index];
+}`,
+	_libraw_get_data_maximum: `\
+extern "C" DllDef unsigned libraw_get_data_maximum(libraw_data_t *lr) {
+	if (!lr) return 0;
+	return lr->color.data_maximum;
+}`,
+	_libraw_get_cam_xyz: `\
+extern "C" DllDef float libraw_get_cam_xyz(libraw_data_t *lr, int i, int j) {
+	if (!lr) return 0.0f;
+	if (i < 0 || i >= 4 || j < 0 || j >= 3) return 0.0f;
+	return lr->color.cam_xyz[i][j];
+}`,
 };
 
 async function main() {

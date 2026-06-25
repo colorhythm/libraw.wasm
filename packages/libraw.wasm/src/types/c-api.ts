@@ -99,5 +99,9 @@ export interface LibRawWasmModule {
 	_libraw_get_ricoh_makernotes(lr: LibRawDataT): number;
 	_libraw_get_samsung_makernotes(lr: LibRawDataT): number;
 	_libraw_get_common_metadata(lr: LibRawDataT): number;
+	_libraw_get_black(lr: LibRawDataT): UnsignedInt;
+	_libraw_get_cblack(lr: LibRawDataT, index: Int): UnsignedInt;
+	_libraw_get_data_maximum(lr: LibRawDataT): UnsignedInt;
+	_libraw_get_cam_xyz(lr: LibRawDataT, i: Int, j: Int): Float;
 	HEAPU8: Uint8Array;
 }

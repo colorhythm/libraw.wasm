@@ -202,6 +202,18 @@ export class LibRaw implements Disposable {
 	getColorMaximum() {
 		return LibRaw.module._libraw_get_color_maximum(this.lr);
 	}
+	getBlack() {
+		return LibRaw.module._libraw_get_black(this.lr);
+	}
+	getCblack(index: Int) {
+		return LibRaw.module._libraw_get_cblack(this.lr, index);
+	}
+	getDataMaximum() {
+		return LibRaw.module._libraw_get_data_maximum(this.lr);
+	}
+	getCamXyz(i: Int, j: Int) {
+		return LibRaw.module._libraw_get_cam_xyz(this.lr, i, j);
+	}
 	setUserMul(index: Int, val: Float) {
 		LibRaw.module._libraw_set_user_mul(this.lr, index, val);
 	}
