@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"comlink": "^4.4.2",
-		"libraw.wasm": "workspace:*",
+		"@colorhythm/libraw-wasm": "workspace:*",
 		"mizu.css": "^0.1.3"
 	},
 	"devDependencies": {

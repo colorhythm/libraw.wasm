@@ -1,4 +1,4 @@
-import type { LibRaw } from "libraw.wasm";
+import type { LibRaw } from "@colorhythm/libraw-wasm";
 
 type LibRawReturn<T extends keyof LibRaw> = LibRaw[T] extends (
 	...args: unknown[]

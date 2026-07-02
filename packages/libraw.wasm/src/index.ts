@@ -226,6 +226,12 @@ export class LibRaw implements Disposable {
 	setOutputColor(value: Int) {
 		LibRaw.module._libraw_set_output_color(this.lr, value);
 	}
+	setHalfSize(value: Int) {
+		LibRaw.module._libraw_set_half_size(this.lr, value);
+	}
+	setUseCameraWb(value: Int) {
+		LibRaw.module._libraw_set_use_camera_wb(this.lr, value);
+	}
 	setOutputBps(value: Int) {
 		LibRaw.module._libraw_set_output_bps(this.lr, value);
 	}

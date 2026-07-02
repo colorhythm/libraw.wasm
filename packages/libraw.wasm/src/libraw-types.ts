@@ -38,7 +38,10 @@ export function LibRaw_thumbnail_formats() {
     LIBRAW_THUMBNAIL_UNKNOWN: 0,
   })
 }
-export function __time_t() {
+export function UINT64() {
+  return __typ.u64;
+}
+export function __darwin_time_t() {
   return __typ.i64;
 }
 export function libraw_P1_color_t() {
@@ -88,6 +91,7 @@ export function libraw_canon_makernotes_t() {
     .field('AFMicroAdjMode', __typ.i32)
     .field('AFMicroAdjValue', __typ.f32)
     .field('MakernotesFlip', __typ.i16)
+    .field('AutoRotateMode', __typ.i16)
     .field('RecordMode', __typ.i16)
     .field('SRAWQuality', __typ.i16)
     .field('wbi', __typ.u32)
@@ -183,6 +187,12 @@ export function libraw_dng_levels_t() {
     .field('asshotneutral', __typ.sizedArray(__typ.f32,4))
     .field('baseline_exposure', __typ.f32)
     .field('LinearResponseLimit', __typ.f32)
+    .field('rawopcodes', __typ.sizedArray(libraw_dng_rawopcode_t(),3))
+}
+export function libraw_dng_rawopcode_t() {
+  return new __typ.Struct()
+    .field('len', __typ.u32)
+    .field('data', __typ.ptr(__typ.u32))
 }
 export function libraw_dnglens_t() {
   return new __typ.Struct()
@@ -363,11 +373,11 @@ export function libraw_lensinfo_t() {
 }
 export function libraw_makernotes_lens_t() {
   return new __typ.Struct()
-    .field('LensID', __typ.u64)
+    .field('LensID', UINT64())
     .field('Lens', __typ.sizedArray(__typ.u8,128))
     .field('LensFormat', ushort())
     .field('LensMount', ushort())
-    .field('CamID', __typ.u64)
+    .field('CamID', UINT64())
     .field('CameraFormat', ushort())
     .field('CameraMount', ushort())
     .field('body', __typ.sizedArray(__typ.u8,64))
@@ -389,11 +399,11 @@ export function libraw_makernotes_lens_t() {
     .field('MinFocusDistance', __typ.f32)
     .field('FocusRangeIndex', __typ.f32)
     .field('LensFStops', __typ.f32)
-    .field('TeleconverterID', __typ.u64)
+    .field('TeleconverterID', UINT64())
     .field('Teleconverter', __typ.sizedArray(__typ.u8,128))
-    .field('AdapterID', __typ.u64)
+    .field('AdapterID', UINT64())
     .field('Adapter', __typ.sizedArray(__typ.u8,128))
-    .field('AttachmentID', __typ.u64)
+    .field('AttachmentID', UINT64())
     .field('Attachment', __typ.sizedArray(__typ.u8,128))
     .field('FocalUnits', ushort())
     .field('FocalLengthIn35mmFormat', __typ.f32)
@@ -819,7 +829,7 @@ export function ph1_t() {
     .field('tag_210', __typ.f32)
 }
 export function time_t() {
-  return __time_t();
+  return __darwin_time_t();
 }
 export function uchar() {
   return __typ.u8;

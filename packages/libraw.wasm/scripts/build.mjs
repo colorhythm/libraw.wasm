@@ -119,6 +119,21 @@ extern "C" DllDef float libraw_get_cam_xyz(libraw_data_t *lr, int i, int j) {
 	if (i < 0 || i >= 4 || j < 0 || j >= 3) return 0.0f;
 	return lr->color.cam_xyz[i][j];
 }`,
+	// Upstream's C API exposes neither of these params; both matter for
+	// browser-scale decoding (tyto's RAW proxy path): half_size decodes
+	// at half dimensions (~1/4 the memory/time — the difference between
+	// a 60MP Phase One fitting in a tab or not), and use_camera_wb
+	// applies the shooter's as-shot white balance.
+	_libraw_set_half_size: `\
+extern "C" DllDef void libraw_set_half_size(libraw_data_t *lr, int value) {
+	if (!lr) return;
+	lr->params.half_size = value;
+}`,
+	_libraw_set_use_camera_wb: `\
+extern "C" DllDef void libraw_set_use_camera_wb(libraw_data_t *lr, int value) {
+	if (!lr) return;
+	lr->params.use_camera_wb = value;
+}`,
 };
 
 async function main() {

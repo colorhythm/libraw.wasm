@@ -1,5 +1,5 @@
 import * as Comlink from "comlink";
-import { LibRaw } from "libraw.wasm";
+import { LibRaw } from "@colorhythm/libraw-wasm";
 import type { Loader } from "./types";
 
 const librawPromise = LibRaw.initialize();

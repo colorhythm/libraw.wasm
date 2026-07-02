@@ -5,7 +5,7 @@
 		"check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"libraw.wasm": "workspace:*"
+		"@colorhythm/libraw-wasm": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/node": "^22.13.4",

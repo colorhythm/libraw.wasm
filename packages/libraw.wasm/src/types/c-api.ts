@@ -82,7 +82,8 @@ export interface LibRawWasmModule {
 	_libraw_strprogress(progress: number): CharPtr;
 	// custom functions
 	_libraw_get_raw_image(lr: LibRawDataT): Ptr;
-	_libraw_set_use_camera_wb(lr: LibRawDataT): void;
+	_libraw_set_use_camera_wb(lr: LibRawDataT, value: Int): void;
+	_libraw_set_half_size(lr: LibRawDataT, value: Int): void;
 	_libraw_get_thumbnail(lr: LibRawDataT): LibRawThumbnailT;
 	_libraw_get_shootinginfo(lr: LibRawDataT): LibRawShootingInfoT;
 	_libraw_get_makernotes(lr: LibRawDataT): LibRawMakernotesT;
